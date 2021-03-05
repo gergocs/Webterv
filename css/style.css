@@ -1,0 +1,23 @@
+body{
+    background-color: lightskyblue;
+}
+
+ul.no-bullets {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#footer{
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+#fcontent{
+    position: absolute;
+    bottom: 5px;
+}
