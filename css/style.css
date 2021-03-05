@@ -8,6 +8,11 @@ ul.no-bullets {
     padding: 0;
 }
 
+#navigation li{
+   display: inline-block;
+    padding-right: 6px;
+}
+
 #footer{
     position: fixed;
     text-align: center;
