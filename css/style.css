@@ -1,5 +1,6 @@
 body{
-    background-color: lightskyblue;
+    background-image: url("../img/cloud.jpg");
+    background-size: cover;
 }
 
 ul.no-bullets {
@@ -8,9 +9,42 @@ ul.no-bullets {
     padding: 0;
 }
 
-#navigation li{
-   display: inline-block;
-    padding-right: 6px;
+.float-left{
+    float: left;
+}
+
+#header{
+    background-color: rgba(60, 60, 60, 0.6);
+}
+
+#nav{
+    background-color: rgba(65, 105, 225,0.4); /* royalblue */
+    height: 30px;
+    clear: both;
+}
+
+#menu li{
+    display: inline-block;
+    padding-right: 30px;
+    font-family: Calibri;
+    font-size: large;
+}
+
+#menu {
+    text-align: center;
+}
+
+#menu :link, :visited{
+    text-decoration: none;
+    color: lightblue;
+}
+
+#menu :hover{
+    color: white;
+}
+
+#content{
+    background-color: rgba(255,255,255,0.4);
 }
 
 #footer{
