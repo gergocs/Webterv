@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="hu">
+<html lang="hu" xmlns="http://www.w3.org/1999/html">
 
     <head>
         <title>Kezdőlap</title>
         <meta charset="UTF-8">
         <link rel="icon" href="img/sun_icon.png">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
     </head>
 
     <body>
@@ -27,7 +28,65 @@
             </div>
         </div>
         <div id="content">
-            <!-- Oldal tartalma ezt majd ha kész az alap -->
+            <form>
+                <input type="text" id="city" class="texts" name="city"><br>
+            </form>
+            <table>
+                <tr>
+                    <th>Hétfő</th>
+                    <th>Kedd</th>
+                    <th>Szerda</th>
+                    <th>Csütörtök</th>
+                    <th>Péntek</th>
+                    <th>Szombat</th>
+                    <th>Vasárnap</th>
+                </tr>
+                <tr id="temp">
+                    <td>xFok</td> <!-- <i class="fa fa-thermometer-empty" aria-hidden="true"></i> Van még sok ilyen-->
+                    <td>xFok2</td>
+                    <td>xFok3</td>
+                    <td>xFok4</td>
+                    <td>xFok5</td>
+                    <td>xFok6</td>
+                    <td>xFok7</td>
+                </tr>
+                <tr id="wind">
+                    <td>Szél erősség</td><!-- Ha gondolod mehet ide szél irány is csak nem tudom, hogy meg lehet e oldani a kép elforgatást-->
+                    <td>Szél erősség2</td>
+                    <td>Szél erősség3</td>
+                    <td>Szél erősség4</td>
+                    <td>Szél erősség5</td>
+                    <td>Szél erősség6</td>
+                    <td>Szél erősség7</td>
+                </tr>
+                <tr id="precipitation">
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                    <td><!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
+                </tr>
+                <tr id="cloud">
+                    <td><!-- Mennyire feéhős--></td>
+                    <td>Derült</td>
+                    <td>Borongós</td>
+                    <td>Felhős</td>
+                    <td>Gomoly felhős</td>
+                    <td>Felhős</td>
+                    <td>Felhős</td>
+                </tr>
+                <tr id="licon">
+                    <td><!-- Kis iconok attól függően milyen az időjárás--></td>
+                    <td><i class="fa fa-cloud" aria-hidden="true"></i></td>
+                    <td><i class="fa fa-tint" aria-hidden="true"></i></td>
+                    <td><i class="fa fa-sun-o" aria-hidden="true"></i></td>
+                    <td><i class="fa fa-snowflake-o" aria-hidden="true"></i></td>
+                    <td><i class="fa fa-bolt" aria-hidden="true"></i></td>
+                    <td><i class="fa fa-cloud" aria-hidden="true"></i></td>
+                </tr>
+            </table>
         </div>
         <div id="footer">
             <div id="fcontent">
