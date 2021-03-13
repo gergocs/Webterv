@@ -60,3 +60,89 @@ ul.no-bullets {
     position: absolute;
     bottom: 5px;
 }
+
+input[type=text],input[type=password],input[type=email]{
+    width: 170px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus,input[type=password]:focus,input[type=email]:focus{
+    width: 30%;
+}
+
+input[id=city]{
+    background-image: url("../img/search.png");
+    background-size: 20px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
+
+input[id=uname]{
+    background-image: url("../img/user.png");
+    background-size: 20px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
+
+input[id=password]{
+    background-image: url("../img/password.png");
+    background-size: 15px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
+
+
+input[id=email]{
+    background-image: url("../img/mail.png");
+    background-size: 20px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
+
+.send{
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+.send:hover{
+    background-color: #008CBA;
+    color: white;
+}
+
+textarea {
+    resize: vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:100px;
+}
+
+#userName{
+    margin-top: 0;
+    float: right;
+    clear: right;
+}
+
+#logout{
+    float: right;
+    clear: right;
+}
+.hide{
+    display: none;
+}

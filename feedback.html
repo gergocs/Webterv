@@ -14,34 +14,27 @@
         <div id="image">
             <!-- Kép-->
             <img class="float-left" src="img/placeholder.png" height="80px" alt="">
-            <p>Epic név</p>
+            <div id="pName">Epic Név</div>
+            <button type="button" class="send hide">Bejelentkezés</button><!-- Majd php miatt lesz hide hogy ne látszódjon -->
+            <div id="userName">Lakatos Brendon</div> <!--class="hide"-->
+            <button type="button" class="send" id="logout">Kijelentkezés</button> <!--class="hide"-->
         </div>
         <div id="nav">
             <ul class="no-bullets" id="menu">
                 <li><a href="index.html">Kezdőlap</a></li>
-                <li><a href="maps.html">Térképek</a></li>
+                <!--<li><a href="maps.html">Térképek</a></li>-->
                 <li><a href="gallery.html">Galéria</a></li>
-                <li><a href="news.html">Hírek</a></li>
+                <!--<li><a href="news.html">Hírek</a></li>-->
                 <li><a href="feedback.html">Visszajelzés</a></li>
             </ul>
         </div>
     </div>
     <div id="content">
         <form><!-- Majd PHP ra-->
-            <label for="fname">Vezetéknév:</label>
-            <input type="text" id="fname" class="texts" name="fname"><br>
-            <label for="lname">Keresztnév:</label>
-            <input type="text" id="lname" class="texts" name="lname"><br>
-            <input type="radio" id="good" class="rad" name="good" value="good">
-            <label for="good">Jó</label><br>
-            <input type="radio" id="ok" class="rad" name="ok" value="ok">
-            <label for="ok">Elmegy</label><br>
-            <input type="radio" id="bad" class="rad" name="bad" value="bad">
-            <label for="bad">Rossz</label><br>
 
             <label for="review">Rövid vélemény:</label><br>
             <textarea id="review" class="texta" name="review" rows="10" cols="50">Egy menci vélemény az oldalrol</textarea><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="send">
         </form>
 
         <!-- Majd ha visszajelzéseket PHP val visszanyomjuk az oldalra (Persze csak a jókat) -->
