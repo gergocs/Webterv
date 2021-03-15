@@ -16,11 +16,11 @@ ul.no-bullets {
 
 #pName{
     color: ghostwhite;
-    margin: 30px 20px;
+    margin: 25px 20px;
     float: left;
     font-weight: bold;
     font-style: italic;
-    font-size: x-large;
+
 }
 
 #header{
@@ -35,7 +35,8 @@ ul.no-bullets {
 
 #menu li{
     display: inline-block;
-    padding-right: 50px;
+    padding-right: 25px;
+    padding-left: 25px;
     font-family: Calibri;
     font-size: large;
 }
@@ -64,7 +65,7 @@ ul.no-bullets {
     min-height: 400px;
 }
 
-@keyframes images_table_animation {
+@keyframes content_animation {
     from {
         opacity: 0;
     }
@@ -72,21 +73,21 @@ ul.no-bullets {
 }
 
 #images-table{
-    animation: images_table_animation 2s ease-in-out;
+    animation: content_animation 2s ease-in-out;
     margin: auto;
     border-spacing: 2vw;
 }
 
-@keyframes forecast_table_animation {
-    from {
-        opacity: 0;
-    }
-    to {opacity: 1}
+h3{
+    text-align: center;
+    animation: content_animation 2s ease-in-out;
 }
 
 #forecast-table{
-    animation: forecast_table_animation 2s ease-in-out;
-    margin: 30px 20px;
+    /*display: inline-block;*/
+    animation: content_animation 2s ease-in-out;
+    /*margin: 30px 20px;*/
+    margin: 30px auto;
     border: none;
     border-collapse: collapse;
 }
@@ -94,19 +95,19 @@ ul.no-bullets {
 #forecast-table th{
     font-size: larger;
     text-align: center;
-    padding: 2.5px 20px;
+    padding: 2.5px 40px; /*20*/
     border-left: 1px solid black;
 }
 
 #forecast-table td{
     text-align: center;
-    padding: 2.5px 20px;
+    padding: 2.5px 40px; /*20*/
     font-family: Calibri;
     border-left: 1px solid black;
 }
 
 #forecast-table tr:first-child{
-    background-color: rgba(193, 202, 251,0.5); /*kelle-e?? vegy esetleg más szín vagy oszlop animáció*/
+    background-color: rgba(193, 202, 251,0.5);
 }
 
 #forecast-table td:first-child{
@@ -115,6 +116,20 @@ ul.no-bullets {
 
 #forecast-table th:first-child{
     border-left: none;
+}
+
+#radar{
+    animation: content_animation 2s ease-in-out;
+    display: block;
+    margin: auto;
+}
+
+iframe{
+    animation: content_animation 2s ease-in-out;
+    display: block;
+    width: 1200px;
+    height: 800px;
+    margin: auto;
 }
 
 #footer{
