@@ -3,7 +3,7 @@
 <html lang="hu" xmlns="http://www.w3.org/1999/html">
 
 <head>
-    <title>Kezdőlap</title>
+    <title>Regisztráció</title>
     <meta charset="UTF-8">
     <link rel="icon" href="img/sun_icon.png">
     <link rel="stylesheet" href="css/style.css">
@@ -14,8 +14,8 @@
 <div id="header">
     <div id="image">
         <!-- Kép-->
-        <img class="float-left" src="img/placeholder.png" height="80px" alt="">
-        <p>Epic név</p>
+        <img id="logo" src="img/animated_sun.gif" height="80px" alt="">
+        <div id="pName">Epic Név</div>
     </div>
     <div id="nav">
         <ul class="no-bullets" id="menu">
@@ -33,8 +33,8 @@
         <input type="password" id="password" class="texts" name="password" placeholder="******"><br>
         <input type="password" id="password" class="texts" name="pwagain"placeholder="******"><br>
         <input type="email" id="email" class="texts" name="email"placeholder="janika@gmail.com"><br>
-        <input type="button" id="login" class="send" value="Bejelentkezés">
-        <input type="button" id="register" class="send" value="Regisztráció">
+        <input type="button" id="login" class="send" value="Bejelentkezés" onclick="window.location.href='login.html'">
+        <input type="button" id="register" class="send" value="Regisztráció" onclick="window.location.href='index.html'">
     </form>
 </div>
 <div id="footer">
