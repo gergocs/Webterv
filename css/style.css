@@ -278,4 +278,16 @@ textarea {
     a{
         font-family: "Times New Roman";
     }
+
+    video{
+        width: 500pt;
+    }
+
+    #news{
+        display: none;
+    }
+
+    iframe{
+        display: none;
+    }
 }
