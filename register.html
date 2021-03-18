@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="hu" xmlns="http://www.w3.org/1999/html">
+<html lang="hu">
 
 <head>
     <title>Regisztráció</title>
@@ -13,28 +13,34 @@
 <body>
 <div id="header">
     <div id="image">
-        <!-- Kép-->
-        <img id="logo" src="img/animated_sun.gif" height="80px" alt="">
-        <h1 id="pName">Epic Név</h1>
+        <img id="logo" src="img/animated_sun.gif" height="80" alt="">
+        <h1 id="pName">WheaterPro</h1>
     </div>
     <div id="nav">
         <ul class="no-bullets" id="menu">
             <li><a href="index.html">Kezdőlap</a></li>
-            <!--<li><a href="maps.html">Térképek</a></li>-->
             <li><a href="gallery.html">Galéria</a></li>
-            <!--<li><a href="news.html">Hírek</a></li>-->
             <li><a href="feedback.html">Visszajelzés</a></li>
         </ul>
     </div>
 </div>
 <div id="content">
     <form>
-        <input type="text" id="uname" class="texts" name="uname" placeholder="janosvagyok123"><br>
-        <input type="password" id="password" class="texts" name="password" placeholder="******"><br>
-        <input type="password" id="password" class="texts" name="pwagain"placeholder="******"><br>
-        <input type="email" id="email" class="texts" name="email"placeholder="janika@gmail.com"><br>
-        <input type="button" id="login" class="send" value="Bejelentkezés" onclick="window.location.href='login.html'">
-        <input type="button" id="register" class="send" value="Regisztráció" onclick="window.location.href='index.html'">
+        <label for="uname"></label><input type="text" id="uname" name="uname" placeholder="janosvagyok123"><br>
+        <label>
+            <input type="password" class="password" name="password" placeholder="******">
+        </label><br>
+        <label>
+            <input type="password" class="password" name="pwagain" placeholder="******">
+        </label><br>
+        <label for="email"></label><input type="email" id="email" class="texts" name="email" placeholder="janika@gmail.com"><br>
+        <a href="login.html">
+            <input type="button" id="login" class="send" value="Bejelentkezés">
+        </a>
+        <a href="login.html">
+            <input type="submit" id="register" class="send" value="Regisztráció">
+        </a>
+        <input type="reset" id="reset" class="send" value="Visszaállítás">
     </form>
 </div>
 <div id="footer">

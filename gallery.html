@@ -12,25 +12,25 @@
     <body>
     <div id="header">
         <div id="image">
-            <!-- Kép-->
-            <img id="logo" src="img/animated_sun.gif" height="80px" alt="">
+            <img id="logo" src="img/animated_sun.gif" height="80" alt="">
             <h1 id="pName">Epic Név</h1>
-            <button type="button" class="send hide">Bejelentkezés</button><!-- Majd php miatt lesz hide hogy ne látszódjon -->
-            <em id="userName">Minta Gábor</em> <!--class="hide"-->
-            <button type="button" class="send" id="logout" onclick="window.location.href='index.html'">Kijelentkezés</button> <!--class="hide"-->
+            <a href="login.html">
+                <button type="button" id="login2" class="send">Bejelentkezés</button>
+            </a>
+            <em id="userName" class="hide">Minta Gábor</em>
+            <a href="index.html">
+                <button type="button" class="send hide" id="logout">Kijelentkezés</button>
+            </a>
         </div>
         <div id="nav">
             <ul class="no-bullets" id="menu">
                 <li><a href="index.html">Kezdőlap</a></li>
-                <!--<li><a href="maps.html">Térképek</a></li>-->
                 <li><a href="gallery.html" class="active">Galéria</a></li>
-                <!--<li><a href="news.html">Hírek</a></li>-->
                 <li><a href="feedback.html">Visszajelzés</a></li>
             </ul>
         </div>
     </div>
-    <div id="content">
-        <!-- Majd valami sexy képeket rakj ide-->
+    <div id="content" class="noselect">
         <table id="images-table">
             <tr>
                 <td class="images"><img src="img/balaton.jpg" height="200" alt="Balaton"> </td>

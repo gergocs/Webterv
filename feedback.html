@@ -12,32 +12,47 @@
     <body>
     <div id="header">
         <div id="image">
-            <!-- Kép-->
-            <img id="logo" src="img/animated_sun.gif" height="80px" alt="">
+            <img id="logo" src="img/animated_sun.gif" height="80" alt="">
             <h1 id="pName">Epic Név</h1>
-            <button type="button" class="send hide">Bejelentkezés</button><!-- Majd php miatt lesz hide hogy ne látszódjon -->
-            <em id="userName">Minta Gábor</em> <!--class="hide"-->
-            <button type="button" class="send" id="logout" onclick="window.location.href='index.html'">Kijelentkezés</button> <!--class="hide"-->
+            <a href="login.html">
+                <button type="button" id="login2" class="send hide">Bejelentkezés</button>
+            </a>
+            <em id="userName">Minta Gábor</em>
+            <a href="index.html">
+                <button type="button" class="send" id="logout">Kijelentkezés</button>
+            </a>
         </div>
         <div id="nav">
             <ul class="no-bullets" id="menu">
                 <li><a href="index.html">Kezdőlap</a></li>
-                <!--<li><a href="maps.html">Térképek</a></li>-->
                 <li><a href="gallery.html">Galéria</a></li>
-                <!--<li><a href="news.html">Hírek</a></li>-->
                 <li><a href="feedback.html" class="active">Visszajelzés</a></li>
             </ul>
         </div>
     </div>
     <div id="content">
-        <form><!-- Majd PHP ra-->
-
+        <form>
             <label for="review" id="form-label">Rövid vélemény:</label><br>
-            <textarea id="review" class="texta" name="review" rows="10" cols="50">Egy menci vélemény az oldalrol</textarea><br>
-            <input type="submit" value="Submit" class="send">
+            <div id="feedb">
+                <div id="radiobc">
+                    <label class="radioc">Jó
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radioc">Elmegy
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="radioc">Rossz
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label><br>
+                </div>
+                <textarea id="review" class="texta" name="review" rows="10" cols="50" placeholder="Egy menci vélemény az oldalrol"></textarea><br>
+            </div>
+            <input type="submit" value="Küldés" class="send">
+            <input type="reset" id="reset" class="send" value="Visszaállítás">
         </form>
-
-        <!-- Majd ha visszajelzéseket PHP val visszanyomjuk az oldalra (Persze csak a jókat) -->
         <p class="pinned-feedback">Mások ezt írták rólunk:</p>
         <table class="pinned-feedback">
             <tr>
