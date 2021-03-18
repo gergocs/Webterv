@@ -15,9 +15,9 @@
             <div id="image">
                 <!-- Kép-->
                 <img id="logo" src="img/animated_sun.gif" height="80px" alt="">
-                <div id="pName">Epic Név</div>
+                <h1 id="pName">Epic Név</h1>
                 <button type="button" class="send hide" onclick="window.location.href='login.html'">Bejelentkezés</button><!-- Majd php miatt lesz hide hogy ne látszódjon -->
-                <div id="userName">Minta Gábor</div> <!--class="hide"-->
+                <em id="userName">Minta Gábor</em> <!--class="hide"-->
                 <button type="button" class="send" id="logout" onclick="window.location.href='index.html'">Kijelentkezés</button> <!--class="hide"-->
             </div>
             <div id="nav">
@@ -32,12 +32,11 @@
         </div>
         <div id="content">
             <form>
-                <input type="text" id="city" class="texts" name="city" placeholder="Szeged"><br>
-                <div id="sbutton">
-                    <input type="submit" value="Keresés" class="send">
-                </div>
+                <input type="text" id="city" class="texts" name="city" placeholder="Szeged">
+                <input id="sbutton" type="submit" value="Keresés" class="send">
 
             </form>
+            <h3>Előrejelzés</h3>
             <table id="forecast-table"> <!--class="hide"-->
                 <tr>
                     <th>Hétfő</th>
@@ -66,15 +65,6 @@
                     <td>Szél erősség6</td>
                     <td>Szél erősség7</td>
                 </tr>
-                <tr id="precipitation">
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                    <td>Diagram<!-- Ide jó lenne valami kis diagram  az esőzésnek--></td>
-                </tr>
                 <tr id="cloud">
                     <td>Gyenge eső<!-- Mennyire feéhős--></td>
                     <td>Derült</td>
@@ -94,10 +84,15 @@
                     <td><i class="fa fa-cloud" aria-hidden="true"></i></td>
                 </tr>
             </table>
+            <h3>Radarvideó</h3>
+            <video id="radar" src="https://www.idokep.hu/radar/radar.mp4" width="900" controls autoplay loop></video>
+            <h3 id="news">Meteorológia hírek</h3>
+            <iframe src="https://www.met.hu/omsz/OMSZ_hirek/" ></iframe>
         </div>
         <div id="footer">
             <div id="fcontent">
                 <p>Alpha 1.0</p>
+                <strong>Az előrejelzés hitelességéért felelősséget nem vállalunk!</strong>
             </div>
         </div>
     </body>
