@@ -219,6 +219,7 @@ input[id=email]{
     margin-left: 10px;
 }
 
+
 #feedb{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -233,6 +234,7 @@ textarea {
     box-shadow:4px 4px 10px rgba(0,0,0,0.06);
     height:100px;
 }
+
 
 #radiobc{
     position: relative;
@@ -282,6 +284,7 @@ textarea {
 
 #userName{
     color: ghostwhite;
+
     margin: 10px 10px 0 0;
     float: right;
     clear: right;
@@ -301,6 +304,7 @@ textarea {
 .hide{
     display: none;
 }
+
 
 .noselect{
     user-select: none;
