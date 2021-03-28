@@ -1,6 +1,7 @@
 body{
     background-image: url("../img/cloud.jpg");
     background-size: cover;
+    background-position: center;
 }
 
 ul.no-bullets {
@@ -18,9 +19,9 @@ ul.no-bullets {
     color: ghostwhite;
     margin: 25px 20px;
     float: left;
+    letter-spacing: 3px;
     font-weight: bold;
     font-style: italic;
-
 }
 
 #header{
@@ -47,8 +48,8 @@ ul.no-bullets {
 
 #menu {
     text-align: center;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 #menu :link, :visited{
@@ -96,7 +97,7 @@ h3{
 }
 
 #forecast-table th{
-    font-size: larger;
+    font-size: 18px;
     text-align: center;
     padding: 3px 40px;
     border-left: 1px solid black;
@@ -147,6 +148,10 @@ iframe{
 #fcontent{
     position: absolute;
     bottom: 5px;
+}
+
+#fcontent p{
+    font-style: italic;
 }
 
 input[type=text],input[type=password],input[type=email]{
