@@ -17,9 +17,9 @@
             case "ok": $var = false; break;
         }
         $review["god"] = $var;
-        console_log($review["god"]);
-
-
+        $var = $_SESSION["reviewC"];
+        $_SESSION["review"][$var] = $review;
+        $_SESSION['reviewC'] = $var + 1;
     }
 
 ?>
