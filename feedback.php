@@ -1,5 +1,27 @@
 <?php
     if(!session_id()) session_start();
+
+    function console_log( $data ){
+        echo '<script>';
+        echo 'console.log('. json_encode( $data ) .')';
+        echo '</script>';
+    }
+
+    if(isset($_GET["review"])){
+        $review = [];
+        $review["review"] = $_GET["review"];
+        $var = true;
+        switch ($_GET["radio"]){
+            case "good": $var = true; break;
+            case "bad":
+            case "ok": $var = false; break;
+        }
+        $review["god"] = $var;
+        console_log($review["god"]);
+
+
+    }
+
 ?>
 <!DOCTYPE html>
 
@@ -45,20 +67,20 @@
 </header>
 <main>
     <div id="content">
-        <form>
+        <form action="feedback.php" method="get">
             <label for="review" id="form-label">Rövid vélemény:</label><br>
             <div id="feedb">
                 <div id="radiobc">
                     <label class="radioc">Jó
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="radio"  value="good">
                         <span class="checkmark"></span>
                     </label>
                     <label class="radioc">Elmegy
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" value="ok">
                         <span class="checkmark"></span>
                     </label>
                     <label class="radioc">Rossz
-                        <input type="radio" name="radio">
+                        <input type="radio" name="radio" value="bad">
                         <span class="checkmark"></span>
                     </label><br>
                 </div>

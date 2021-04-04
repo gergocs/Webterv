@@ -101,17 +101,17 @@ class CallApi
         for ($i = 0; $i < 8; $i++) {
             $temp["date"] = date("l", $this->wheather["daily"][$i]["dt"]);
             $var = "fog";
-            if (strcmp($this->wheather["daily"][$i]["wheater"][0]["main"], "Clouds") > 0) {
+            if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Clouds") > 0) {
                 $var = "clouds";
-            } else if (strcmp($this->wheather["daily"][$i]["wheater"][0]["main"], "Thunderstorm") > 0){
+            } else if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Thunderstorm") > 0){
                 $temp["sun"] = "thunder";
-            }else if (strcmp($this->wheather["daily"][$i]["wheater"][0]["main"], "Drizzle") > 0){
+            }else if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Drizzle") > 0){
                 $temp["sun"] = "rain";
-            }else if (strcmp($this->wheather["daily"][$i]["wheater"][0]["main"], "Rain") > 0){
+            }else if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Rain") > 0){
                 $temp["sun"] = "rain";
-            }else if (strcmp($this->wheather["daily"][$i]["wheater"][0]["main"], "Snow") > 0){
+            }else if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Snow") > 0){
                 $temp["sun"] = "snow";
-            }else if (strcmp($this->wheather["daily"][$i]["wheater"][0]["main"], "Clear") > 0){
+            }else if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Clear") > 0){
                 $temp["sun"] = "clear";
             }
             $temp["sun"] = $var;
