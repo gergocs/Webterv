@@ -1,7 +1,9 @@
 <?php
     if(!session_id()) session_start();
-    include("globals.php");
     $good = true;
+    $goodUname = -1;
+    $goodPw = -1;
+
 
 $gUsers = [ //Ide lehetne egy file beolvasás
     "NagyLajosAJampi" => "lajcsivagyok",
@@ -21,10 +23,14 @@ $_SESSION['gUsers'] = $gUsers;
         if (isset($_SESSION['gUsers'])) {
             $tmp = $_SESSION['gUsers'];
             if (isset($tmp[$gUserInfo["uName"]])) {
-                console_log(strcmp($tmp[$gUserInfo["uName"]], $gUserInfo["pWord"]));
+                $goodUname = 2;
                 if (strcmp($tmp[$gUserInfo["uName"]], $gUserInfo["pWord"]) == 0) {
                     $good = false;
+                }else{
+                    $goodPw = 1;
                 }
+            }else{
+                $goodUname = 1;
             }
         }
 
@@ -65,10 +71,22 @@ $_SESSION['gUsers'] = $gUsers;
 <main>
 <div id="content">
     <form action="login.php" method="post">
-        <label for="uname"></label><input type="text" id="uname" name="uname" placeholder="janosvagyok123"><br>
+        <label for="uname"><input type="text" id="uname" name="uname" placeholder="janosvagyok123"></label>
+        <?php
+            if ($goodUname == 1){
+                echo "Rossz a neved tesa";
+            }
+        ?>
+        <br>
         <label>
             <input type="password" class="password" name="password" placeholder="******">
-        </label><br>
+        </label>
+        <?php
+        if ($goodPw == 1){
+            echo "Rossz a pwd tesa";
+        }
+        ?>
+        <br>
         <input type="submit" id="login" class="send" value="Bejelentkezés">
         <input type="reset" id="reset" class="send" value="Visszaállítás">
     </form>
