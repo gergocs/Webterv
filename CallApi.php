@@ -10,9 +10,18 @@ class CallApi
     private $wheather;
     function __construct($city)
     {//City list.json t be kéne olvasni és onnan ki tudnám keresni a lon/lat -ot. Ha lehet majd JSON be legyen de nem baj ha vanilla tömb be van
-       $this->city = $city;
-       $this->lon = 22.33333;
-       $this->lat = 47.349998;
+        $datas = json_decode(file_get_contents("city.list.json"), true);
+
+        $this->city = $city;
+        foreach ($datas as $data) {
+            if ($data["name"] === $city) {
+                $this->lon = $data["coord"]["lon"];
+                $this->lat = $data["coord"]["lat"];
+                break;
+            }
+        }
+        //$this->lon = 22.33333;
+        //$this->lat = 47.349998;
     }
     function getForeCast(){
         $apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" . $this->lat . "&lon=" . $this->lon . "&lang=hu&exclude=minutely,hourly" . "&appid=" . self::apiKey;

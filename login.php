@@ -8,7 +8,17 @@
 $gUsers = [ //Ide lehetne egy file beolvasás
     "NagyLajosAJampi" => "lajcsivagyok",
     "LakatosPS5" => "sadlife",
+    "admin" => "admin"
 ];
+
+$file = fopen("users.txt", "r");
+while ( ($line = fgets($file)) !== false ){
+    $User = unserialize($line);
+    $Users[] = $User;
+}
+fclose($file);
+print_r($Users);
+
 $_SESSION['gUsers'] = $gUsers;
 
     function console_log( $data ){

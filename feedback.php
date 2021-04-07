@@ -89,12 +89,37 @@
             <input type="submit" value="Küldés" class="send">
             <input type="reset" id="reset" class="send" value="Visszaállítás">
         </form>
+
+        <?php
+        $feedback =[
+            "uname" => "Brendon",
+            "opinion" => "Elmegy",
+            "text" => "Mi ez te?"
+        ];
+
+        $file = fopen("feedbacks.txt", "a");
+        //fwrite($file, serialize($feedback)."\n");
+        fclose($file);
+        ?>
+
         <p class="pinned-feedback">Mások ezt írták rólunk:</p>
         <table class="pinned-feedback">
             <tr>
                 <td>Józsi bácsi</td>
                 <td>Nagyon menci</td>
             </tr>
+            <?php
+            $file = fopen("feedbacks.txt", "r");
+            while ( ($line = fgets($file)) !== false ){
+                $feedback = unserialize($line);
+                echo "<tr>";
+                    echo "<td>".$feedback["uname"]."</td>";
+                    echo "<td>".$feedback["opinion"]."</td>";
+                    echo "<td>".$feedback["text"]."</td>";
+                echo "</tr>";
+            }
+            fclose($file);
+            ?>
         </table>
     </div>
 </main>
