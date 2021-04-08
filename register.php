@@ -10,6 +10,25 @@
         "LakatosPS5" => "sadlife",
     ];
 
+    $Users = [ //
+        [
+                "uname" => "NagyLajosAJampi",
+                "pword" => "lajcsivagyok"
+        ],
+
+        [
+                "uname" => "LakatosPS5",
+                "pword" => "sadlife"
+        ]
+    ];
+
+    $file = fopen("users.txt", "r");
+    while ( ($line = fgets($file)) !== false ){
+        $User = unserialize($line);
+        $Users[] = $User;
+    }
+    fclose($file);
+
     function console_log( $data ){
         echo '<script>';
         echo 'console.log('. json_encode( $data ) .')';
@@ -58,7 +77,6 @@
             $goodMail = 1;
         }
         console_log($regUser);
-        //Mentés fileba majd a regUsert
     }
     if ($goodUname < 2 || $goodPw < 2 || $goodPwA < 2 || $goodMail < 2){
 ?>
@@ -166,5 +184,9 @@
 
 <?php
     }else{
+        //Mentés fileba majd a regUsert
+        $file = fopen("users.txt", "a");
+        fwrite($file, serialize($regUser)."\n");
+        fclose($file);
         header("Location: login.php");
     }

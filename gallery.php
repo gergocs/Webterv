@@ -1,5 +1,7 @@
 <?php
+    include_once 'PictureManagement.php';
     if(!session_id()) session_start();
+    $p1 = new PictureManagement("img/uploaded/");
 ?>
 <!DOCTYPE html>
 
@@ -51,20 +53,21 @@
     <main>
         <div id="content" class="noselect">
             <table id="images-table">
+                <caption><h3>Felhasználók által küldött képek</h3></caption>
                 <tr>
-                    <td class="images"><img src="img/balaton.jpg" height="200" alt="Balaton"> </td>
-                    <td class="images"><img src="img/duna.jpg" height="200" alt="Duna"></td>
-                    <td class="images"><img src="img/field.jpg" height="200" alt="mező"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
                 </tr>
                 <tr>
-                    <td class="images"><img src="img/komlo.jpg" height="200" alt="Komló"></td>
-                    <td class="images"><img src="img/lake.jpg" height="200" alt="tó"></td>
-                    <td class="images"><img src="img/lanchid.jpg" height="200" alt="Lánchíd"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
                 </tr>
                 <tr>
-                    <td class="images"><img src="img/rakpart.jpg" height="200" alt="szegedi rakpart"></td>
-                    <td class="images"><img src="img/szabadsag_hid.jpg" height="200" alt="Szabadság híd"></td>
-                    <td class="images"><img src="img/szegedi-dom.jpg" height="200" alt="Szegedi Dóm"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
                 </tr>
             </table>
         </div>
