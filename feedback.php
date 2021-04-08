@@ -1,4 +1,5 @@
 <?php
+    include_once 'PictureManagement.php';
     if(!session_id()) session_start();
 
     function console_log( $data ){
@@ -67,7 +68,7 @@
 </header>
 <main>
     <div id="content">
-        <form action="feedback.php" method="get">
+        <form action="feedback.php" method="post" enctype="multipart/form-data">
             <label for="review" id="form-label">Rövid vélemény:</label><br>
             <div id="feedb">
                 <div id="radiobc">
@@ -85,12 +86,19 @@
                     </label><br>
                 </div>
                 <textarea id="review" class="texta" name="review" rows="10" cols="50" placeholder="Egy menci vélemény az oldalrol"></textarea><br>
+                <label for="review" id="form-label">Kép feltöltése:</label><br>
+                <div>
+                    <input type="file" name="weather-pic" accept="image/*" class="file-send">
+                </div>
             </div>
             <input type="submit" value="Küldés" class="send">
             <input type="reset" id="reset" class="send" value="Visszaállítás">
         </form>
 
         <?php
+        $p1 = new PictureManagement("img/uploaded/");
+        $p1->save_pictures("weather-pic");
+
         $feedback =[
             "uname" => "Brendon",
             "opinion" => "Elmegy",
@@ -105,7 +113,8 @@
         <p class="pinned-feedback">Mások ezt írták rólunk:</p>
         <table class="pinned-feedback">
             <tr>
-                <td>Józsi bácsi</td>
+                <td>Józsi bácsi: </td>
+                <td> (Jó) </td>
                 <td>Nagyon menci</td>
             </tr>
             <?php
@@ -113,8 +122,8 @@
             while ( ($line = fgets($file)) !== false ){
                 $feedback = unserialize($line);
                 echo "<tr>";
-                    echo "<td>".$feedback["uname"]."</td>";
-                    echo "<td>".$feedback["opinion"]."</td>";
+                    echo "<td>".$feedback["uname"].": "."</td>";
+                    echo "<td>"." (".$feedback["opinion"].") "."</td>";
                     echo "<td>".$feedback["text"]."</td>";
                 echo "</tr>";
             }

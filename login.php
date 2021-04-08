@@ -17,7 +17,6 @@ while ( ($line = fgets($file)) !== false ){
     $Users[] = $User;
 }
 fclose($file);
-print_r($Users);
 
 $_SESSION['gUsers'] = $gUsers;
 

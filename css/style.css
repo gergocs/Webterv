@@ -226,6 +226,10 @@ input[id=email]{
     margin-left: 10px;
 }
 
+.file-send{
+    margin: 4px 10px;
+}
+
 
 #feedb{
     margin-top: 20px;
@@ -286,6 +290,10 @@ textarea {
 
 .pinned-feedback{
     margin-left: 10px;
+}
+
+.pinned-feedback td{
+
 }
 
 
