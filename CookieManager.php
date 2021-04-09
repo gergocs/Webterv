@@ -5,6 +5,8 @@ class CookieManager
 {
     private $datas = [];
 
+    private $readFromFile = [];
+
     function console_log( $data ){
         echo '<script>';
         echo 'console.log('. json_encode( $data ) .')';
@@ -12,6 +14,11 @@ class CookieManager
     }
 
     public function __construct(){
+        $this->readFromFile = [
+            "datas" => $this->datas,
+            "key" => "randomstringvagyok",
+            "uname" => "LakatosPS",
+        ];
         $this->createKey();
     }
 
