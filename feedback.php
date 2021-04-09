@@ -116,11 +116,13 @@
             $file = fopen("feedbacks.txt", "r");
             while ( ($line = fgets($file)) !== false ){
                 $feedback = unserialize($line);
-                echo "<tr>";
-                    echo "<td>".$feedback["uname"].": "."</td>";
-                    echo "<td>"." (".$feedback["opinion"].") "."</td>";
-                    echo "<td>".$feedback["text"]."</td>";
-                echo "</tr>";
+                if ($feedback["opinion"] == "Jó" || $feedback["opinion"] == "Elmegy") { // Nem akarunk rossz véleményeket igaz?
+                    echo "<tr>";
+                    echo "<td>" . $feedback["uname"] . ": " . "</td>";
+                    echo "<td>" . " (" . $feedback["opinion"] . ") " . "</td>";
+                    echo "<td>" . $feedback["text"] . "</td>";
+                    echo "</tr>";
+                }
             }
             fclose($file);
             ?>
