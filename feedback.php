@@ -112,11 +112,6 @@
 
         <p class="pinned-feedback">Mások ezt írták rólunk:</p>
         <table class="pinned-feedback">
-            <tr>
-                <td>Józsi bácsi: </td>
-                <td> (Jó) </td>
-                <td>Nagyon menci</td>
-            </tr>
             <?php
             $file = fopen("feedbacks.txt", "r");
             while ( ($line = fgets($file)) !== false ){

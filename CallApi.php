@@ -9,20 +9,32 @@ class CallApi
     private $lon;
     private $wheather;
     function __construct($city)
-    {//City list.json t be kéne olvasni és onnan ki tudnám keresni a lon/lat -ot. Ha lehet majd JSON be legyen de nem baj ha vanilla tömb be van
+    {
         $datas = json_decode(file_get_contents("city.list.json"), true);
 
-        $this->city = $city;
+        $counter = 0;
         foreach ($datas as $data) {
             if ($data["name"] === $city) {
                 $this->lon = $data["coord"]["lon"];
                 $this->lat = $data["coord"]["lat"];
                 break;
+            }else{
+                $counter++;
             }
         }
-        //$this->lon = 22.33333;
-        //$this->lat = 47.349998;
+        if ($counter == count($datas)){
+            $rnum = rand(0, count($datas));
+            $city = $datas[$rnum]["name"];
+            $this->lon = $datas[$rnum]["coord"]["lon"];
+            $this->lat = $datas[$rnum]["coord"]["lat"];
+        }
+        $this->city = $city;
     }
+
+    function getCity(){
+        return $this->city;
+    }
+
     function getForeCast(){
         $apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" . $this->lat . "&lon=" . $this->lon . "&lang=hu&exclude=minutely,hourly" . "&appid=" . self::apiKey;
 
@@ -37,7 +49,6 @@ class CallApi
         $response = curl_exec($curl);
         curl_close($curl);
         $data = json_decode($response);
-        console_log($data);
         $this->wheather=json_decode($response, true);
         return $data;
     }
@@ -45,13 +56,13 @@ class CallApi
     function hungarialo($day): string
     {
         switch ($day){
-            case "Monday": return "Hetfo";
+            case "Monday": return "Hétfő";
             case "Tuesday": return "Kedd";
             case "Wednesday": return "Szerda";
-            case "Thursday": return "Csutortok";
-            case "Friday": return "Pentek";
+            case "Thursday": return "Csütörtök";
+            case "Friday": return "Péntek";
             case "Saturday": return "Szombat";
-            case "Sunday": return "Vasarnap";
+            case "Sunday": return "Vasárnap";
         }
         return "Hetfo";
     }

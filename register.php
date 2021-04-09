@@ -5,22 +5,8 @@
     $goodPwA = -1;
     $goodMail = -1;
 
-    $gUsers = [ //Ide lehetne egy file beolvasás
-        "NagyLajosAJampi" => "lajcsivagyok",
-        "LakatosPS5" => "sadlife",
-    ];
-
-    $Users = [ //
-        [
-                "uname" => "NagyLajosAJampi",
-                "pword" => "lajcsivagyok"
-        ],
-
-        [
-                "uname" => "LakatosPS5",
-                "pword" => "sadlife"
-        ]
-    ];
+    $Users = [];
+    $Users = [];
 
     $file = fopen("users.txt", "r");
     while ( ($line = fgets($file)) !== false ){
@@ -45,9 +31,8 @@
         $regexUname = "/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/";
         $regexPword = "/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/";
         if (preg_match($regexUname,$_POST['uname'])==1){
-            $array_keys = array_keys($gUsers);
-            foreach ($array_keys as $array_key){
-                if(strcmp($gUsers[$array_key], $_POST['uname']) == 0){
+            foreach ($Users as $user) {
+                if (strcmp($user["uname"], $_POST['uname']) == 0) {
                     $goodUname = 1;
                     goto SKIP;
                 }
@@ -71,12 +56,19 @@
             $goodPw = 1;
         }
         if (isset($_POST['email'])){
+            foreach ($Users as $user) {
+                console_log($user);
+                if (strcmp($user["mail"], $_POST['email']) == 0){
+                    $goodMail = 1;
+                    goto SKIP2;
+                }
+            }
             $regUser['mail'] = $_POST['email'];
             $goodMail = 2;
         }else{
             $goodMail = 1;
         }
-        console_log($regUser);
+        SKIP2:
     }
     if ($goodUname < 2 || $goodPw < 2 || $goodPwA < 2 || $goodMail < 2){
 ?>
@@ -117,8 +109,6 @@
                 <?php
                     if ($goodUname == 1){
                         echo '><p>Lol de béna felhasználónév</p>';
-                    }else if ($goodUname == 2){
-                        echo 'value=" ' . $regUser['uname']  . ' ">';
                     }else{
                         echo ">";
                     }
@@ -131,8 +121,6 @@
                 <?php
                     if ($goodPw == 1){
                         echo '<p>Ezt csukott szemmel is kitalalom</p>';
-                    }else if ($goodPw == 2){
-                        echo 'value=" ' . $tmp  . ' ">';
                     }else{
                         echo ">";
                     }
@@ -143,8 +131,6 @@
                 <?php
                     if ($goodPwA == 1){
                         echo '<p>Mi van nem megy a gépelés?</p>';
-                    }else if ($goodPwA == 2){
-                        echo 'value=" ' . $regUser['pword']  . ' ">';
                     }else{
                         echo ">";
                     }
@@ -153,10 +139,8 @@
                 </label><br>
                 <label for="email"><input type="email" id="email" class="texts" name="email" placeholder="janika@gmail.com"
                 <?php
-                    if ($goodPw == 1){
+                    if ($goodMail == 1){
                         echo '<p>Azért nem olyan nehéz egy emailt beírni</p>';
-                    }else if ($goodPwA == 2){
-                        echo 'value=" ' . $regUser['mail']  . ' ">';
                     }else{
                         echo ">";
                     }

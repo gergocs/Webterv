@@ -15,6 +15,8 @@
         $temp = "";
         $wind = "";
         $cloud = "";
+        $sun = "";
+        $cityn = "";
         if (isset($_GET['city'])){
             $weather = new CallApi($_GET['city']);
             $response = $weather->getForeCast();
@@ -22,6 +24,7 @@
             $wind = $weather->getWind();
             $cloud = $weather->getCloud();
             $sun = $weather->getSun();
+            $cityn = $weather->getCity();
         }
 
         ?>
@@ -84,7 +87,10 @@
             <?php
                 if ($response != ""){
                     ?>
-            <h3>Előrejelzés</h3>
+            <h3>Előrejelzés:
+                <?php
+                    echo $cityn;
+                ?></h3>
             <table id="forecast-table">
                 <tr>
                     <?php
@@ -98,12 +104,12 @@
                         for ($i = 0; $i < 7; $i++) {
                             echo '<td headers="' . $temp[$i]["date"] . '">' . $temp[$i]["morning"] . '/' . $temp[$i]["night"] . '°C <i class="';
                                 $var = "fa fa-thermometer-empty";
-                                if ($temp[$i]["morning"] > 0 && $temp[$i]["morning"] > 10){
+                                if ($temp[$i]["morning"] > 0 && $temp[$i]["morning"] < 10){
                                     $var = "fa fa-thermometer-quarter";
-                                }else if($temp[$i]["morning"] > 9 && $temp[$i]["morning"] > 20){
+                                }else if($temp[$i]["morning"] > 9 && $temp[$i]["morning"] < 20){
                                     $var = "fa fa-thermometer-half";
-                                }else if($temp[$i]["morning"] > 19 && $temp[$i]["morning"] > 30){
-                                    $var = "fa fa-thermometer-three-quarter";
+                                }else if($temp[$i]["morning"] > 19 && $temp[$i]["morning"] < 30){
+                                    $var = "fa fa-thermometer-three-quarters";
                                 }else if($temp[$i]["morning"] > 29){
                                     $var = "fa fa-thermometer-full";
                                 }
@@ -157,13 +163,6 @@
                             echo $var . '" aria-hidden="true"></i></td>';
                         }
                     ?>
-                    <!--<td headers="hetfo"><i class="fa fa-tint" aria-hidden="true"></i></td>
-                    <td headers="kedd"><i class="fa fa-cloud" aria-hidden="true"></i></td>
-                    <td headers="szerda"><i class="fa fa-tint" aria-hidden="true"></i></td>
-                    <td headers="csutortok"><i class="fa fa-sun-o" aria-hidden="true"></i></td>
-                    <td headers="pentek"><i class="fa fa-snowflake-o" aria-hidden="true"></i></td>
-                    <td headers="szombat"><i class="fa fa-bolt" aria-hidden="true"></i></td>
-                    <td headers="vasarnap"><i class="fa fa-cloud" aria-hidden="true"></i></td>-->
                 </tr>
             </table>
                     <?php
