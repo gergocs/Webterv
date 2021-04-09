@@ -4,21 +4,13 @@
     $goodUname = -1;
     $goodPw = -1;
 
-
-$gUsers = [ //Ide lehetne egy file beolvasás
-    "NagyLajosAJampi" => "lajcsivagyok",
-    "LakatosPS5" => "sadlife",
-    "admin" => "admin"
-];
-
 $file = fopen("users.txt", "r");
+$Users = [];
 while ( ($line = fgets($file)) !== false ){
     $User = unserialize($line);
     $Users[] = $User;
 }
 fclose($file);
-
-$_SESSION['gUsers'] = $gUsers;
 
     function console_log( $data ){
         echo '<script>';
@@ -27,14 +19,13 @@ $_SESSION['gUsers'] = $gUsers;
     }
 
     if(isset($_POST["uname"])){
-        $gUserInfo["uName"] = $_POST["uname"];
-        $gUserInfo["pWord"] = $_POST["password"];
-        if (isset($_SESSION['gUsers'])) {
-            $tmp = $_SESSION['gUsers'];
-            if (isset($tmp[$gUserInfo["uName"]])) {
+        foreach ($Users as $user){
+            if (strcmp($user["uname"],$_POST["uname"]) == 0){
                 $goodUname = 2;
-                if (strcmp($tmp[$gUserInfo["uName"]], $gUserInfo["pWord"]) == 0) {
+                if (strcmp($user["pword"],$_POST["password"]) == 0){
                     $good = false;
+                    $_SESSION["gLoggedIn"] = true;
+                    $_SESSION["gUname"] = $_POST["uname"];
                 }else{
                     $goodPw = 1;
                 }
@@ -42,8 +33,6 @@ $_SESSION['gUsers'] = $gUsers;
                 $goodUname = 1;
             }
         }
-
-        $_SESSION['gUserInfo'] = $gUserInfo;
 
     }
     if($good){
@@ -117,7 +106,5 @@ $_SESSION['gUsers'] = $gUsers;
 </html>'
 <?php
 }else{
-    $_SESSION["gLoggedIn"] = true;
-    $_SESSION["gUname"] = $gUserInfo["uName"];
     header("Location: index.php");
 }

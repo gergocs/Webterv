@@ -44,10 +44,10 @@
 
         $regexUname = "/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/";
         $regexPword = "/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/";
-        if (preg_match($regexUname,$_POST['uname'])>=1){
+        if (preg_match($regexUname,$_POST['uname'])==1){
             $array_keys = array_keys($gUsers);
             foreach ($array_keys as $array_key){
-                if(strcmp($gUsers[$array_key], $_POST['uname']) != 0){
+                if(strcmp($gUsers[$array_key], $_POST['uname']) == 0){
                     $goodUname = 1;
                     goto SKIP;
                 }
