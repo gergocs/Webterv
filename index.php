@@ -1,11 +1,21 @@
 <?php
     include_once 'CallApi.php';
+    include_once 'CookieManager.php';
     if(!session_id()) session_start();
+    setcookie('testing', 'good', time()+3600);
+    $cookiesGood = CookieManager::cookiesEnabled();
+    $cookie = new CookieManager();
+    $key = "";
     function console_log( $data ){
         echo '<script>';
         echo 'console.log('. json_encode( $data ) .')';
         echo '</script>';
     }
+
+    if (!$cookiesGood){
+        $_SESSION = $cookie->getDatas($key);
+    }
+
     if(isset($_GET["logout"])){
         $_SESSION["gLoggedIn"] = false;
     }
@@ -26,7 +36,6 @@
             $sun = $weather->getSun();
             $cityn = $weather->getCity();
         }
-
         ?>
         <!DOCTYPE html>
 
