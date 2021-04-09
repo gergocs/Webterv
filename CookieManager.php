@@ -40,8 +40,9 @@ class CookieManager
         $this->writeData($key);
     }
 
-    public function getDatas(): array
+    public function getDatas($key): array
     {
+        $this->readData($key);
         return $this->datas;
     }
 
