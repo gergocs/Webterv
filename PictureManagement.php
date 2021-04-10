@@ -13,7 +13,7 @@ class PictureManagement
 
     public function save_pictures($name)
     {
-        if (isset($_FILES[$name])) {
+        if (isset($_FILES[$name]) && $_FILES[$name]["size"] !== 0) {
 
             $extension = strtolower(pathinfo($_FILES[$name]["name"], PATHINFO_EXTENSION));
 

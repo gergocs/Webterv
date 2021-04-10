@@ -24,10 +24,21 @@ class CookieManager
 
     private function readData($key){
         //A fileból ki kellene olvasni az adatokat
+        $file = fopen("cookie.txt", "r");
+        $this->readFromFile = unserialize(fgets($file));
+        fclose($file);
     }
 
     private function writeData($key){
         //a file ba kellene írni a kulcsot üres adatokkal
+        $this->readFromFile = [
+            "datas" => "",
+            "key" => $key,
+            "uname" => "",
+        ];
+        $file = fopen("cookie.txt", "w");
+        fwrite($file, serialize($this->readFromFile)."\n");
+        fclose($file);
     }
 
     private function createKey(){
