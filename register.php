@@ -8,7 +8,15 @@
     $Users = [];
     $Users = [];
 
-    $file = fopen("users.txt", "r");
+    try {
+        $file = fopen("users.txt", "r");
+        if ($file === false){
+            throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+        }
+    }catch (Error $err){
+        echo $err->getMessage()."<br>";
+    }
+
     while ( ($line = fgets($file)) !== false ){
         $User = unserialize($line);
         $Users[] = $User;
@@ -33,7 +41,7 @@
         if (preg_match($regexUname,$_POST['uname'])==1){
             foreach ($Users as $user) {
                 if (strcmp($user["uname"], $_POST['uname']) == 0) {
-                    $goodUname = 1;
+                    $goodUname = 0;
                     goto SKIP;
                 }
             }
@@ -89,7 +97,7 @@
         <div id="header">
             <div id="image">
                 <img id="logo" src="img/animated_sun.gif" height="80" alt="">
-                <h1 id="pName">WheaterPro</h1>
+                <h1 id="pName">WeatherPro</h1>
             </div>
             <nav>
                 <div id="nav">
@@ -105,47 +113,57 @@
     <main>
         <div id="content">
             <form action="register.php" method="post">
-                <label for="uname"><input type="text" id="uname" name="uname" placeholder="janosvagyok123"
+                <label for="uname"><input type="text" id="uname" name="uname" placeholder="janosvagyok123"></label>
                 <?php
-                    if ($goodUname == 1){
-                        echo '><p>Lol de béna felhasználónév</p>';
-                    }else{
-                        echo ">";
+                    try {
+                        if ($goodUname == 0){
+                            throw new TypeError("Ilyen felhasználónév már létezik!");
+                        }
+                        else if ($goodUname == 1){
+                            throw new TypeError("Nem felel meg a követelményeknek!");
+                        }
+                    }catch (TypeError $te){
+                        echo $te->getMessage();
                     }
 
                 ?>
-                </label><br>
+                <br>
                 <label>
-                    <input type="password" class="password" name="password" placeholder="******"
+                    <input type="password" class="password" name="password" placeholder="******"></label>
 
                 <?php
-                    if ($goodPw == 1){
-                        echo '<p>Ezt csukott szemmel is kitalalom</p>';
-                    }else{
-                        echo ">";
+                    try {
+                        if ($goodPw == 1){
+                            throw new TypeError("Nem felel meg a követelményeknek!");
+                        }
+                    }catch (TypeError $te){
+                        echo $te->getMessage();
                     }
                 ?>
-                </label><br>
+                <br>
                 <label>
-                    <input type="password" class="password" name="pwagain" placeholder="******"
+                    <input type="password" class="password" name="pwagain" placeholder="******"></label>
                 <?php
-                    if ($goodPwA == 1){
-                        echo '<p>Mi van nem megy a gépelés?</p>';
-                    }else{
-                        echo ">";
-                    }
-
-                ?>
-                </label><br>
-                <label for="email"><input type="email" id="email" class="texts" name="email" placeholder="janika@gmail.com"
-                <?php
-                    if ($goodMail == 1){
-                        echo '<p>Azért nem olyan nehéz egy emailt beírni</p>';
-                    }else{
-                        echo ">";
+                    try {
+                        if ($goodPwA == 1){
+                            throw new TypeError("A beírt jelszó nem egyezik!");
+                        }
+                    }catch (TypeError $te){
+                        echo $te->getMessage();
                     }
                 ?>
-                </label><br>
+                <br>
+                <label for="email"><input type="email" id="email" class="texts" name="email" placeholder="janika@gmail.com"></label>
+                <?php
+                    try {
+                        if ($goodMail == 1){
+                            throw new TypeError("Azért nem olyan nehéz egy emailt beírni!");
+                        }
+                    }catch (TypeError $te){
+                        echo $te->getMessage();
+                    }
+                ?>
+                <br>
                 <input type="submit" id="register" class="send" value="Regisztráció">
                 <input type="reset" id="reset" class="send" value="Visszaállítás">
             </form>
@@ -153,6 +171,9 @@
                 <input type="submit" id="login" class="send" value="Bejelentkezés">
             </form>
         </div>
+        <?php
+
+        ?>
     </main>
     <footer>
         <div id="footer">
@@ -169,7 +190,15 @@
 <?php
     }else{
         //Mentés fileba majd a regUsert
-        $file = fopen("users.txt", "a");
+        try {
+            $file = fopen("users.txt", "a");
+            if ($file === false){
+                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+            }
+        }catch (Error $err){
+            echo $err->getMessage()."<br>";
+        }
+
         fwrite($file, serialize($regUser)."\n");
         fclose($file);
         header("Location: login.php");

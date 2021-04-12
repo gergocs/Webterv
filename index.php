@@ -59,7 +59,7 @@
         <div id="header">
             <div id="image">
                 <img id="logo" src="img/animated_sun.gif" height="80" alt="">
-                <h1 id="pName">WheaterPro</h1>
+                <h1 id="pName">WeatherPro</h1>
                 <?php
                     if($_SESSION["gLoggedIn"]){
                         echo '<em id="userName">' .  $_SESSION["gUname"] . '</em>';

@@ -21,6 +21,7 @@
         $var = $_SESSION["reviewC"];
         $_SESSION["review"][$var] = $review;
         $_SESSION['reviewC'] = $var + 1;
+
     }
 
 ?>
@@ -40,7 +41,7 @@
     <div id="header">
         <div id="image">
             <img id="logo" src="img/animated_sun.gif" height="80" alt="">
-            <h1 id="pName">WheaterPro</h1>
+            <h1 id="pName">WeatherPro</h1>
             <?php
             if($_SESSION["gLoggedIn"]){
                 echo '<em id="userName">' .  $_SESSION["gUname"] . '</em>';
@@ -105,7 +106,14 @@
             "text" => "Mi ez te?"
         ];
 
-        $file = fopen("feedbacks.txt", "a");
+        try {
+            $file = fopen("feedbacks.txt", "a");
+            if ($file === false){
+                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+            }
+        }catch (Error $err){
+            echo $err->getMessage()."<br>";
+        }
         //fwrite($file, serialize($feedback)."\n");
         fclose($file);
         ?>
@@ -113,7 +121,14 @@
         <p class="pinned-feedback">Mások ezt írták rólunk:</p>
         <table class="pinned-feedback">
             <?php
-            $file = fopen("feedbacks.txt", "r");
+            try {
+                $file = fopen("feedbacks.txt", "r");
+                if ($file === false){
+                    throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+                }
+            }catch (Error $err){
+                echo $err->getMessage()."<br>";
+            }
             while ( ($line = fgets($file)) !== false ){
                 $feedback = unserialize($line);
                 if ($feedback["opinion"] == "Jó" || $feedback["opinion"] == "Elmegy") { // Nem akarunk rossz véleményeket igaz?

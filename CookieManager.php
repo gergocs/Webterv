@@ -24,7 +24,15 @@ class CookieManager
 
     private function readData($key){
         //A fileból ki kellene olvasni az adatokat
-        $file = fopen("cookie.txt", "r");
+        try {
+            $file = fopen("cookie.txt", "r");
+            if ($file === false){
+                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+            }
+        }catch (Error $err){
+            echo $err->getMessage()."<br>";
+        }
+
         $this->readFromFile = unserialize(fgets($file));
         fclose($file);
     }
@@ -36,7 +44,16 @@ class CookieManager
             "key" => $key,
             "uname" => "",
         ];
-        $file = fopen("cookie.txt", "w");
+
+        try {
+            $file = fopen("cookie.txt", "w");
+            if ($file === false){
+                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+            }
+        }catch (Error $err){
+            echo $err->getMessage()."<br>";
+        }
+
         fwrite($file, serialize($this->readFromFile)."\n");
         fclose($file);
     }
