@@ -1,5 +1,6 @@
 <?php
     include "globals.php";
+    include_once "CookieManager.php";
     $goodUname = -1;
     $goodPw = -1;
     $goodPwA = -1;
@@ -168,7 +169,10 @@
 
 <?php
     }else{
-        //Mentés fileba majd a regUsert
+        $tmp = new CookieManager();
+        $cUser = $regUser['uname'];
+        $tmp->setKey($cUser);
+
         $file = fopen("users.txt", "a");
         fwrite($file, serialize($regUser)."\n");
         fclose($file);
