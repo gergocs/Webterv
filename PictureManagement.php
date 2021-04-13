@@ -17,24 +17,28 @@ class PictureManagement
 
             $extension = strtolower(pathinfo($_FILES[$name]["name"], PATHINFO_EXTENSION));
 
-            if (in_array($extension, $this->allowed_extensions)) {
-                if ($_FILES[$name]["error"] === 0) {
-                    $destination = $this->path . $_FILES[$name]["name"];
+            try {
+                if (in_array($extension, $this->allowed_extensions)) {
+                    if ($_FILES[$name]["error"] === 0) {
+                        $destination = $this->path . $_FILES[$name]["name"];
 
-                    if (file_exists($destination)) {
-                        echo "<strong>Figyelem:</strong> Ilyen nevű fájl már létezik! <br/>";
-                    }else{
-                        if (move_uploaded_file($_FILES[$name]["tmp_name"], $destination)) {
-                            echo "Sikeres fájlfeltöltés! <br/>";
-                        } else {
-                            echo "<strong>Hiba:</strong> A fájl átmozgatása nem sikerült! <br/>";
+                        if (file_exists($destination)) {
+                            throw new Error("<strong>Figyelem:</strong> Ilyen nevű fájl már létezik! <br/>");
+                        }else{
+                            if (move_uploaded_file($_FILES[$name]["tmp_name"], $destination)) {
+                                echo "Sikeres fájlfeltöltés! <br/>";
+                            } else {
+                                throw new Error("<strong>Hiba:</strong> A fájl átmozgatása nem sikerült! <br/>");
+                            }
                         }
+                    } else {
+                        throw new Error("<strong>Hiba:</strong> A fájlfeltöltés nem sikerült! <br/>");
                     }
                 } else {
-                    echo "<strong>Hiba:</strong> A fájlfeltöltés nem sikerült! <br/>";
+                    throw new Error("<strong>Hiba:</strong> A fájl kiterjesztése nem megfelelő! <br/>");
                 }
-            } else {
-                echo "<strong>Hiba:</strong> A fájl kiterjesztése nem megfelelő! <br/>";
+            }catch (Error $err){
+                echo $err->getMessage();
             }
         }
     }

@@ -26,9 +26,15 @@ class CookieManager
             }
         return $data;
     }
-
     private function readData(){
-        $file = fopen("cookie.txt", "r");
+        try {
+            $file = fopen("cookie.txt", "r");
+            if ($file === false){
+                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+            }
+        }catch (Error $err){
+            echo $err->getMessage()."<br>";
+        }
         $counter = 0;
         while(!feof($file)) {
             $tmp = unserialize(fgets($file));
@@ -65,8 +71,6 @@ class CookieManager
             fwrite($file, serialize($array)."\n");
             fclose($file);
         }
-
-
     }
 
     public function createKey()

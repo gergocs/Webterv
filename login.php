@@ -3,14 +3,22 @@
     $good = true;
     $goodUname = -1;
     $goodPw = -1;
+    $Users = [];
 
-$file = fopen("users.txt", "r");
-$Users = [];
-while ( ($line = fgets($file)) !== false ){
-    $User = unserialize($line);
-    $Users[] = $User;
-}
-fclose($file);
+    try {
+        $file = fopen("users.txt", "r");
+        if ($file === false){
+            throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+        }
+    }catch (Error $err){
+        echo $err->getMessage()."<br>";
+    }
+
+    while ( ($line = fgets($file)) !== false ){
+        $User = unserialize($line);
+        $Users[] = $User;
+    }
+    fclose($file);
 
     function console_log( $data ){
         echo '<script>';
@@ -33,7 +41,6 @@ fclose($file);
                 $goodUname = 1;
             }
         }
-
     }
     if($good){
         ?><!DOCTYPE html>
@@ -53,7 +60,7 @@ fclose($file);
     <div id="header">
         <div id="image">
             <img id="logo" src="img/animated_sun.gif" height="80" alt="">
-            <h1 id="pName">WheaterPro</h1>
+            <h1 id="pName">WeatherPro</h1>
         </div>
         <nav>
             <div id="nav">
@@ -71,8 +78,12 @@ fclose($file);
     <form action="login.php" method="post">
         <label for="uname"><input type="text" id="uname" name="uname" placeholder="janosvagyok123"></label>
         <?php
-            if ($goodUname == 1){
-                echo "Rossz a neved tesa";
+            try {
+                if ($goodUname == 1){
+                    throw new TypeError("Hibás felhasználónév!");
+                }
+            }catch (TypeError $te){
+                echo $te->getMessage();
             }
         ?>
         <br>
@@ -80,9 +91,14 @@ fclose($file);
             <input type="password" class="password" name="password" placeholder="******">
         </label>
         <?php
-        if ($goodPw == 1){
-            echo "Rossz a pwd tesa";
-        }
+            try {
+                if ($goodPw == 1){
+                    throw new TypeError("Hibás jelszó!");
+                }
+            }catch (TypeError $te){
+                echo $te->getMessage();
+            }
+
         ?>
         <br>
         <input type="submit" id="login" class="send" value="Bejelentkezés">

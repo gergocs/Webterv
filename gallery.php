@@ -19,7 +19,7 @@
         <div id="header">
             <div id="image">
                 <img id="logo" src="img/animated_sun.gif" height="80" alt="">
-                <h1 id="pName">WheaterPro</h1>
+                <h1 id="pName">WeatherPro</h1>
                 <?php
                 if($_SESSION["gLoggedIn"]){
                     echo '<em id="userName">' .  $_SESSION["gUname"] . '</em>';
@@ -55,19 +55,19 @@
             <table id="images-table">
                 <caption><h3>Felhasználók által küldött képek</h3></caption>
                 <tr>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
                 </tr>
                 <tr>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
                 </tr>
                 <tr>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
-                    <td class="user-images"><img src="<?php echo $p1->display_pictures() ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
+                    <td class="user-images"><img src="<?php echo $p1->display_pictures(); ?>" height="200" alt="Felhasználói kép"></td>
                 </tr>
             </table>
         </div>
