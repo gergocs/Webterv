@@ -37,36 +37,15 @@
 </head>
 
 <body>
-<header>
-    <div id="header">
-        <div id="image">
-            <img id="logo" src="img/animated_sun.gif" height="80" alt="">
-            <h1 id="pName">WeatherPro</h1>
-            <?php
-            if($_SESSION["gLoggedIn"]){
-                echo '<em id="userName">' .  $_SESSION["gUname"] . '</em>';
-                ?>
-                <form action="index.php">
-                    <input type="hidden" name="logout" value="good">
-                    <input type="submit" class="send" id="logout" value="Kijelentkezés">
-                </form>
-                <?php
-            }else{
-                header("Location: login.php");
-            }
-            ?>
-        </div>
-        <nav>
-            <div id="nav">
-                <ul class="no-bullets" id="menu">
-                    <li><a href="index.php">Kezdőlap</a></li>
-                    <li><a href="gallery.php">Galéria</a></li>
-                    <li><a href="feedback.php" class="active">Visszajelzés</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-</header>
+<?php
+    if ($_SESSION["gLoggedIn"]){
+
+        include_once "header.php";
+
+    }else{
+        header("Location: login.php");
+    }
+?>
 <main>
     <div id="content">
         <form action="feedback.php" method="post" enctype="multipart/form-data">
