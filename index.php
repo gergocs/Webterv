@@ -14,7 +14,6 @@
     }
 
     if (!$cookiesGood){
-        $_SESSION = $cookie->getDatas($key);
 
         if (count($_SESSION) == 0){
             $_SESSION["gLoggedIn"] = false;
@@ -248,6 +247,5 @@
 </html>
         <?php
     }else{
-        $cookie->setDatas($_SESSION);
         header("Location: login.php");
     }

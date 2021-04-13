@@ -3,9 +3,10 @@
 
 class CookieManager
 {
-    private $datas = [];
-
-    private $readFromFile = [];
+    private $key = "";
+    private $loggedin;
+    private $uname;
+    private $good;
 
     function console_log( $data ){
         echo '<script>';
@@ -13,17 +14,19 @@ class CookieManager
         echo '</script>';
     }
 
-    public function __construct(){
-        $this->readFromFile = [
-            "datas" => $this->datas,
-            "key" => "randomstringvagyok",
-            "uname" => "LakatosPS",
-        ];
-        $this->createKey();
+    private static function replace_a_line($data, $key, $uname, $loggedin) {
+        if (stristr($data, $key)) {
+            $array = [
+                "key" => $key,
+                "uname" => $uname,
+                "login" => $loggedin,
+            ];
+                $good = false;
+                return serialize($array).'\n';
+            }
+        return $data;
     }
-
-    private function readData($key){
-        //A fileból ki kellene olvasni az adatokat
+    private function readData(){
         try {
             $file = fopen("cookie.txt", "r");
             if ($file === false){
@@ -32,52 +35,77 @@ class CookieManager
         }catch (Error $err){
             echo $err->getMessage()."<br>";
         }
-
-        $this->readFromFile = unserialize(fgets($file));
-        fclose($file);
-    }
-
-    private function writeData($key){
-        //a file ba kellene írni a kulcsot üres adatokkal
-        $this->readFromFile = [
-            "datas" => "",
-            "key" => $key,
-            "uname" => "",
-        ];
-
-        try {
-            $file = fopen("cookie.txt", "w");
-            if ($file === false){
-                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+        $counter = 0;
+        while(!feof($file)) {
+            $tmp = unserialize(fgets($file));
+            $tkey = $tmp["key"];
+            if (strcmp($tkey,$this->key) == 0){
+                $this->uname = $tmp["uname"];
+                $this->loggedin = $tmp["login"];
+                $counter = 1;
+                break;
             }
-        }catch (Error $err){
-            echo $err->getMessage()."<br>";
         }
-
-        fwrite($file, serialize($this->readFromFile)."\n");
+        if ($counter == 0){
+            $this->createKey();
+        }
         fclose($file);
     }
 
-    private function createKey(){
+    private function writeData(){
+        $good = true;
+        $data = file('cookie.txt');
+
+        $data = array_map('replace_a_line',$data);
+        file_put_contents('cookie.txt', implode('', $data));
+
+        if (!$good){
+            $file = fopen("cookie.txt", "a");
+            $this->createKey();
+            $this->loggedin = false;
+            $array = [
+                "key" => $this->key,
+                "uname" => $this->uname,
+                "login" => $this->loggedin,
+            ];
+            fwrite($file, serialize($array)."\n");
+            fclose($file);
+        }
+    }
+
+    public function createKey()
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $key = "";
 
         for ($i = 0; $i < 30; $i++){
             $key[$i] = $characters[rand(0,strlen($characters)-1)];
         }
-        $this->writeData($key);
+        $this->key = $key;
     }
 
-    public function getDatas($key): array
+    public function getKey()
     {
-        $this->readData($key);
-        return $this->datas;
+        return $this->key;
     }
 
-    public function setDatas(array $datas): void
+    public function setKey($uname): void
     {
-        $this->datas = $datas;
+        $this->uname = $uname;
+        $this->writeData();
     }
+
+    public function getLoggedin()
+    {
+        return $this->loggedin;
+    }
+
+    public function setLoggedin($loggedin): void
+    {
+        $this->loggedin = $loggedin;
+    }
+
+
 
     public static function cookiesEnabled(): bool
     {
