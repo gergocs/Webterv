@@ -1,11 +1,9 @@
 <?php
     include_once 'CallApi.php';
-    include_once 'CookieManager.php';
     if(!session_id()) session_start();
+    include_once 'globals.php';
     setcookie('testing', 'good', time()+3600);
-    $cookiesGood = CookieManager::cookiesEnabled();
-    $cookie = new CookieManager();
-    $key = "randomstringvagyok";
+    $cookiesGood = cookiesEnabled();
 
     function console_log( $data ){
         echo '<script>';
@@ -82,48 +80,9 @@
             <nav>
                 <div id="nav">
                     <ul class="no-bullets" id="menu">
-                        <?php
-                            if ($cookiesGood){
-                        ?>
                         <li><a href="index.php" class="active">Kezdőlap</a></li>
                         <li><a href="gallery.php">Galéria</a></li>
                         <li><a href="feedback.php">Visszajelzés</a></li>
-                        <?php
-                            }else{
-                        ?>
-                        <li>
-                            <form action="index.php" method="get">
-                                <input type="hidden" name="key" value="
-                                <?php
-                                    echo $key;
-                                ?>
-                                ">
-                                <input type="submit" class="active" value="Kezdőlap">
-                            </form>
-                        </li>
-                        <li>
-                            <form action="gallery.php" method="get">
-                                <input type="hidden" name="key" value="
-                                <?php
-                                    echo $key;
-                                ?>
-                                ">
-                                <input type="submit" class="active" value="Galéria">
-                            </form>
-                        </li>
-                        <li>
-                            <form action="feedback.php" method="get">
-                                <input type="hidden" name="key" value="
-                                <?php
-                                    echo $key;
-                                ?>
-                                ">
-                                <input type="submit" class="active" value="Visszajelzés">
-                            </form>
-                        </li>
-                                <?php
-                            }
-                                ?>
                     </ul>
                 </div>
             </nav>
@@ -133,14 +92,7 @@
         <div id="content">
             <form action="index.php" method="get">
                 <label for="city"></label><input type="text" id="city" class="texts" name="city" placeholder="Szeged">
-                    <?php
-                        if (!$cookiesGood){
-                            echo '<input type="hidden" name="key" value="' . $key . '">';
-                        }
-
-                    ?>
                 <input id="sbutton" type="submit" value="Keresés" class="send">
-
             </form>
             <?php
                 if ($response != ""){

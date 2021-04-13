@@ -1,6 +1,5 @@
 <?php
     include "globals.php";
-    include_once "CookieManager.php";
     $goodUname = -1;
     $goodPw = -1;
     $goodPwA = -1;
@@ -9,6 +8,8 @@
     $Users = [];
     $Users = [];
 
+
+    $file = "";
     try {
         $file = fopen("users.txt", "r");
         if ($file === false){
@@ -190,10 +191,6 @@
 
 <?php
     }else{
-        $tmp = new CookieManager();
-        $cUser = $regUser['uname'];
-        $tmp->setKey($cUser);
-
         try {
             $file = fopen("users.txt", "a");
             if ($file === false){
