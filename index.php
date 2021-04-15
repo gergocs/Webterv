@@ -1,5 +1,8 @@
 <?php
     include_once 'CallApi.php';
+    ini_set('session.cookie_secure', 1);
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_only_cookies', 1);
     if(!session_id()) session_start();
     include_once 'globals.php';
     setcookie('testing', 'good', time()+3600);
