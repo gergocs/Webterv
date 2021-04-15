@@ -79,7 +79,7 @@
 <main>
 <div id="content">
     <form action="login.php" method="post">
-        <label for="uname"><input type="text" id="uname" name="uname" placeholder="janosvagyok123"></label>
+        <label for="uname"><input type="text" id="uname" name="uname" placeholder="MintaGabor84"></label>
         <?php
             try {
                 if ($goodUname == 1){
@@ -91,7 +91,7 @@
         ?>
         <br>
         <label>
-            <input type="password" class="password" name="password" placeholder="******">
+            <input type="password" class="password" name="password" placeholder="********">
         </label>
         <?php
             try {

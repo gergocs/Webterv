@@ -115,14 +115,14 @@
     <main>
         <div id="content">
             <form action="register.php" method="post">
-                <label for="uname"><input type="text" id="uname" name="uname" placeholder="janosvagyok123"></label>
+                <label for="uname"><input type="text" id="uname" name="uname" placeholder="MintaGabor84"></label>
                 <?php
                     try {
                         if ($goodUname == 0){
                             throw new TypeError("Ilyen felhasználónév már létezik!");
                         }
                         else if ($goodUname == 1){
-                            throw new TypeError("Nem felel meg a követelményeknek!");
+                            throw new TypeError("Kis- és nagybetűket és számokat tartalmazhat és 8-20 karakter hosszúságú lehet!");
                         }
                     }catch (TypeError $te){
                         echo $te->getMessage();
@@ -131,12 +131,12 @@
                 ?>
                 <br>
                 <label>
-                    <input type="password" class="password" name="password" placeholder="******"></label>
+                    <input type="password" class="password" name="password" placeholder="********"></label>
 
                 <?php
                     try {
                         if ($goodPw == 1){
-                            throw new TypeError("Nem felel meg a követelményeknek!");
+                            throw new TypeError("Kis- és nagybetűket és számokat tartalmazhat és 8-20 karakter hosszúságú lehet!");
                         }
                     }catch (TypeError $te){
                         echo $te->getMessage();
@@ -155,11 +155,11 @@
                     }
                 ?>
                 <br>
-                <label for="email"><input type="email" id="email" class="texts" name="email" placeholder="janika@gmail.com"></label>
+                <label for="email"><input type="email" id="email" class="texts" name="email" placeholder="minta@gmail.com"></label>
                 <?php
                     try {
                         if ($goodMail == 1){
-                            throw new TypeError("Azért nem olyan nehéz egy emailt beírni!");
+                            throw new TypeError("Hibás vagy már regisztrált email!");
                         }
                     }catch (TypeError $te){
                         echo $te->getMessage();
