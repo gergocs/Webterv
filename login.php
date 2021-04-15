@@ -9,7 +9,7 @@
     $Users = [];
 
     try {
-        $file = fopen("users.txt", "r");
+        $file = fopen("data/users.txt", "r");
         if ($file === false){
             throw new Error("HIBA: A fájl megnyitása nem sikerült!");
         }

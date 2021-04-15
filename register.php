@@ -11,7 +11,7 @@
 
     $file = "";
     try {
-        $file = fopen("users.txt", "r");
+        $file = fopen("data/users.txt", "r");
         if ($file === false){
             throw new Error("HIBA: A fájl megnyitása nem sikerült!");
         }
@@ -192,7 +192,7 @@
 <?php
     }else{
         try {
-            $file = fopen("users.txt", "a");
+            $file = fopen("data/users.txt", "a");
             if ($file === false){
                 throw new Error("HIBA: A fájl megnyitása nem sikerült!");
             }

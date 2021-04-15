@@ -1,5 +1,5 @@
 <?php
-    include_once 'PictureManagement.php';
+    include_once 'class/PictureManagement.php';
     ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
@@ -31,7 +31,7 @@
         ];
         $file = "";
         try {
-            $file = fopen("feedbacks.txt", "a");
+            $file = fopen("data/feedbacks.txt", "a");
             if ($file === false){
                 throw new Error("HIBA: A fájl megnyitása nem sikerült!");
             }
@@ -102,7 +102,7 @@
         <table class="pinned-feedback">
             <?php
             try {
-                $file = fopen("feedbacks.txt", "r");
+                $file = fopen("data/feedbacks.txt", "r");
                 if ($file === false){
                     throw new Error("HIBA: A fájl megnyitása nem sikerült!");
                 }
