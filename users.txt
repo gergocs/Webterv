@@ -1,2 +1,0 @@
-a:3:{s:5:"uname";s:17:"lakatos.gandalf89";s:5:"pword";s:11:"Gandalfka92";s:4:"mail";s:22:"schalad@gandalfmail.hu";}
-a:3:{s:5:"uname";s:9:"JanikaVok";s:5:"pword";s:9:"JanikaVok";s:4:"mail";s:16:"janika@gmail.com";}
