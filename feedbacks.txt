@@ -1,2 +1,0 @@
-a:3:{s:5:"uname";s:5:"Géza";s:7:"opinion";s:3:"Jó";s:4:"text";s:20:"Nagyon jó az oldal!";}
-a:3:{s:5:"uname";s:7:"Brendon";s:7:"opinion";s:5:"Rossz";s:4:"text";s:9:"Mi ez te?";}
