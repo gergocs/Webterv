@@ -79,7 +79,7 @@
                         <span class="checkmark"></span>
                     </label><br>
                 </div>
-                <textarea id="review" class="texta" name="review" rows="10" cols="50" placeholder="Egy menci vélemény az oldalrol"></textarea><br>
+                <textarea id="review" class="texta" name="review" rows="10" cols="50" placeholder="Egy menci vélemény az oldalról"></textarea><br>
                 <label for="review" id="form-label">Kép feltöltése:</label><br>
                 <div>
                     <input type="file" name="weather-pic" accept="image/*" class="file-send">
