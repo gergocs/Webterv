@@ -1,30 +1,41 @@
 <?php
-    include_once 'PictureManagement.php';
+    include_once 'class/PictureManagement.php';
     ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
-    if(!session_id()) session_start();
-
-    function console_log( $data ){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
+    if(!session_id()){
+        session_start();
     }
 
-    if(isset($_GET["review"])){
+    if(isset($_POST["review"])){
         $review = [];
-        $review["review"] = $_GET["review"];
+        $review["review"] = $_POST["review"];
         $var = true;
-        switch ($_GET["radio"]){
+        switch ($_POST["radio"]){
+            case "ok":
             case "good": $var = true; break;
-            case "bad":
-            case "ok": $var = false; break;
+            case "bad": $var = false; break;
         }
         $review["god"] = $var;
         $var = $_SESSION["reviewC"];
         $_SESSION["review"][$var] = $review;
         $_SESSION['reviewC'] = $var + 1;
-
+        $feedback =[
+            "uname" => $_SESSION['gUname'],
+            "opinion" => $review["god"],
+            "text" => $review["review"]
+        ];
+        $file = "";
+        try {
+            $file = fopen("data/feedbacks.txt", "a");
+            if ($file === false){
+                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
+            }
+        }catch (Error $err){
+            echo $err->getMessage()."<br>";
+        }
+        fwrite($file, serialize($feedback)."\n");
+        fclose($file);
     }
 
 ?>
@@ -81,30 +92,13 @@
         <?php
         $p1 = new PictureManagement("img/uploaded/");
         $p1->save_pictures("weather-pic");
-
-        $feedback =[
-            "uname" => "Brendon",
-            "opinion" => "Elmegy",
-            "text" => "Mi ez te?"
-        ];
-
-        try {
-            $file = fopen("feedbacks.txt", "a");
-            if ($file === false){
-                throw new Error("HIBA: A fájl megnyitása nem sikerült!");
-            }
-        }catch (Error $err){
-            echo $err->getMessage()."<br>";
-        }
-        //fwrite($file, serialize($feedback)."\n");
-        fclose($file);
         ?>
 
         <p class="pinned-feedback">Mások ezt írták rólunk:</p>
         <table class="pinned-feedback">
             <?php
             try {
-                $file = fopen("feedbacks.txt", "r");
+                $file = fopen("data/feedbacks.txt", "r");
                 if ($file === false){
                     throw new Error("HIBA: A fájl megnyitása nem sikerült!");
                 }
@@ -113,10 +107,10 @@
             }
             while ( ($line = fgets($file)) !== false ){
                 $feedback = unserialize($line);
-                if ($feedback["opinion"] == "Jó" || $feedback["opinion"] == "Elmegy") { // Nem akarunk rossz véleményeket igaz?
+                if ($feedback["opinion"]) {
                     echo "<tr>";
                     echo "<td>" . $feedback["uname"] . ": " . "</td>";
-                    echo "<td>" . " (" . $feedback["opinion"] . ") " . "</td>";
+                    echo "<td>" . " (jó) " . "</td>";
                     echo "<td>" . $feedback["text"] . "</td>";
                     echo "</tr>";
                 }

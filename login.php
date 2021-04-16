@@ -2,14 +2,16 @@
     ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
-    if(!session_id()) session_start();
+    if(!session_id()){
+        session_start();
+    }
     $good = true;
     $goodUname = -1;
     $goodPw = -1;
     $Users = [];
 
     try {
-        $file = fopen("users.txt", "r");
+        $file = fopen("data/users.txt", "r");
         if ($file === false){
             throw new Error("HIBA: A fájl megnyitása nem sikerült!");
         }
@@ -22,12 +24,6 @@
         $Users[] = $User;
     }
     fclose($file);
-
-    function console_log( $data ){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
-    }
 
     if(isset($_POST["uname"])){
         foreach ($Users as $user){

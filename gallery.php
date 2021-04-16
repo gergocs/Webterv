@@ -1,9 +1,11 @@
 <?php
-    include_once 'PictureManagement.php';
+    include_once 'class/PictureManagement.php';
     ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
-    if(!session_id()) session_start();
+    if(!session_id()){
+        session_start();
+    }
     $p1 = new PictureManagement("img/uploaded/");
 ?>
 <!DOCTYPE html>
