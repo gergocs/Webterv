@@ -14,7 +14,10 @@ class CallApi
 
         $counter = 0;
         foreach ($datas as $data) {
-            if ($data["name"] === $city) {
+            $tmp = strtolower($data["name"]);
+            $tmp2 = strtolower($city);
+            if ($tmp === $tmp2) {
+                $this->city = $data["name"];
                 $this->lon = $data["coord"]["lon"];
                 $this->lat = $data["coord"]["lat"];
                 break;

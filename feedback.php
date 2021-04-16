@@ -3,12 +3,8 @@
     ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
-    if(!session_id()) session_start();
-
-    function console_log( $data ){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
+    if(!session_id()){
+        session_start();
     }
 
     if(isset($_POST["review"])){

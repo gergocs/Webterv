@@ -3,19 +3,14 @@
     ini_set('session.cookie_secure', 1);
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
-    if(!session_id()) session_start();
+    if(!session_id()){
+        session_start();
+    }
     include_once 'globals.php';
     setcookie('testing', 'good', time()+3600);
     $cookiesGood = cookiesEnabled();
 
-    function console_log( $data ){
-        echo '<script>';
-        echo 'console.log('. json_encode( $data ) .')';
-        echo '</script>';
-    }
-
     if (!$cookiesGood){
-
         if (count($_SESSION) == 0){
             $_SESSION["gLoggedIn"] = false;
         }
@@ -39,7 +34,8 @@
             $wind = $weather->getWind();
             $cloud = $weather->getCloud();
             $sun = $weather->getSun();
-            $cityn = $weather->getCity();
+            $cityn = ucfirst($weather->getCity());
+
         }
         ?>
         <!DOCTYPE html>
