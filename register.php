@@ -40,6 +40,7 @@
 
         $regexUname = "/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/";
         $regexPword = "/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/";
+        $regexEmail = "/^[0-9a-z\.-]+@([0-9a-z-]+\.)+[a-z]{2,4}$/";
         if (preg_match($regexUname,$_POST['uname'])==1){
             foreach ($Users as $user) {
                 if (strcmp($user["uname"], $_POST['uname']) == 0) {
@@ -65,9 +66,8 @@
         }else{
             $goodPw = 1;
         }
-        if (isset($_POST['email'])){
+        if (preg_match($regexEmail,$_POST['email'])>=1){
             foreach ($Users as $user) {
-                console_log($user);
                 if (strcmp($user["mail"], $_POST['email']) == 0){
                     $goodMail = 1;
                     goto SKIP2;
