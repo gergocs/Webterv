@@ -222,7 +222,7 @@ input[id=email]{
     color: white;
 }
 
-#form-label{
+.form-label{
     margin-left: 10px;
 }
 

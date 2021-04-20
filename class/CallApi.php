@@ -94,7 +94,7 @@ class CallApi
         ];
         $retVal = [];
         for ($i = 0; $i < 8; $i++){
-            $temp["date"] = date("l",$this->wheather["daily"][$i]["dt"]);
+            $temp["date"] = $this->hungarialo(date("l",$this->wheather["daily"][$i]["dt"]));
             $temp["speed"] = round($this->wheather["daily"][$i]["wind_speed"] * 3.6);
             $retVal[$i] = $temp;
         }
@@ -108,7 +108,7 @@ class CallApi
         ];
         $retVal = [];
         for ($i = 0; $i < 8; $i++){
-            $temp["date"] = date("l",$this->wheather["daily"][$i]["dt"]);
+            $temp["date"] = $this->hungarialo(date("l",$this->wheather["daily"][$i]["dt"]));
             $temp["clouds"] = $this->wheather["daily"][$i]["clouds"];
             $retVal[$i] = $temp;
         }
@@ -122,7 +122,7 @@ class CallApi
         ];
         $retVal = [];
         for ($i = 0; $i < 8; $i++) {
-            $temp["date"] = date("l", $this->wheather["daily"][$i]["dt"]);
+            $temp["date"] = $this->hungarialo(date("l", $this->wheather["daily"][$i]["dt"]));
             $var = "fog";
             if (strcmp($this->wheather["daily"][$i]["weather"][0]["main"], "Clouds") > 0) {
                 $var = "clouds";

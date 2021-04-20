@@ -7,7 +7,7 @@
         session_start();
     }
 
-    if(isset($_POST["review"])){
+    if(isset($_POST["send"]) && !empty($_POST['review'])){
         $review = [];
         $review["review"] = $_POST["review"];
         $var = true;
@@ -63,7 +63,7 @@
 <main>
     <div id="content">
         <form action="feedback.php" method="post" enctype="multipart/form-data">
-            <label for="review" id="form-label">Rövid vélemény:</label><br>
+            <label for="review" class="form-label">Rövid vélemény:</label><br>
             <div id="feedb">
                 <div id="radiobc">
                     <label class="radioc">Jó
@@ -80,12 +80,12 @@
                     </label><br>
                 </div>
                 <textarea id="review" class="texta" name="review" rows="10" cols="50" placeholder="Egy menci vélemény az oldalról"></textarea><br>
-                <label for="review" id="form-label">Kép feltöltése:</label><br>
+                <label for="review" class="form-label">Kép feltöltése:</label><br>
                 <div>
                     <input type="file" name="weather-pic" accept="image/*" class="file-send">
                 </div>
             </div>
-            <input type="submit" value="Küldés" class="send">
+            <input type="submit" value="Küldés" name="send" class="send">
             <input type="reset" id="reset" class="send" value="Visszaállítás">
         </form>
 
