@@ -118,7 +118,7 @@
 </footer>
 </body>
 
-</html>'
+</html>
 <?php
 }else{
     header("Location: index.php");

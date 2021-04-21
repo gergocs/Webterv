@@ -89,7 +89,7 @@
                                 }else if($temp[$i]["morning"] > 29){
                                     $var = "fa fa-thermometer-full";
                                 }
-                                echo $var . '" aria-hidden="true"></i></th>';
+                                echo $var . '" aria-hidden="true"></i></td>';
                         }
                     ?>
                 </tr>
