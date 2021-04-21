@@ -26,9 +26,28 @@
         <nav>
             <div id="nav">
                 <ul class="no-bullets" id="menu">
-                    <li><a href="index.php" class="active">Kezdőlap</a></li>
-                    <li><a href="gallery.php">Galéria</a></li>
-                    <li><a href="feedback.php">Visszajelzés</a></li>
+                    <?php
+                        if ($_SESSION["page"] == 1){
+                            ?>
+                                <li><a href="index.php" class="active">Kezdőlap</a></li>
+                                <li><a href="gallery.php">Galéria</a></li>
+                                <li><a href="feedback.php">Visszajelzés</a></li>
+                            <?php
+
+                        }else if($_SESSION["page"] == 2){
+                            ?>
+                                <li><a href="index.php">Kezdőlap</a></li>
+                                <li><a href="gallery.php" class="active">Galéria</a></li>
+                                <li><a href="feedback.php">Visszajelzés</a></li>
+                            <?php
+                        }else{
+                            ?>
+                                <li><a href="index.php">Kezdőlap</a></li>
+                                <li><a href="gallery.php">Galéria</a></li>
+                                <li><a href="feedback.php" class="active">Visszajelzés</a></li>
+                            <?php
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>

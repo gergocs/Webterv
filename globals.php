@@ -8,6 +8,9 @@ if(!isset($_SESSION['gLoggedIn'])){
     $_SESSION['gLoggedIn'] = false;
 }
 
+$_SESSION['page'] = 1;
+
+
 if(!isset($_SESSION['review'])){
     $_SESSION['review'] = [];
 }

@@ -6,6 +6,7 @@
     if(!session_id()){
         session_start();
     }
+    $_SESSION["page"] = 2;
     $p1 = new PictureManagement("img/uploaded/");
 ?>
 <!DOCTYPE html>

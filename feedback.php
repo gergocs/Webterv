@@ -6,6 +6,7 @@
     if(!session_id()){
         session_start();
     }
+    $_SESSION['page'] = 3;
 
     if(isset($_POST["send"]) && !empty($_POST['review'])){
         $review = [];

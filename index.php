@@ -6,6 +6,7 @@
     if(!session_id()){
         session_start();
     }
+
     include_once 'globals.php';
     setcookie('testing', 'good', time()+3600);
     $cookiesGood = cookiesEnabled();
